@@ -5,6 +5,8 @@ import MclarenCarImg from "../../../assets/images/mclaren-orange-big.png";
 import BlobImg from "../../../assests/images/blob.svg";
 import { SCREENS } from "../../components/responsive";
 import Button from "../../components/button";
+import Sidebar from "../../components/sidebar";
+
 //@ts-ignore
 import video from "../../../assests/space.mp4";
 
@@ -211,7 +213,7 @@ export default function TopSection() {
             <Description>It's dark in here..</Description>
           </GlassBackground>
           <ButtonsContainer>
-            <Button theme="filled" text="Enter" />
+            <Button theme="outlined" text="Enter" />
           </ButtonsContainer>
         </LeftContainer>
 
@@ -225,6 +227,7 @@ export default function TopSection() {
       <HeroBackground>
         <VideoBg autoPlay loop muted src={video} type="video/mp4" />
       </HeroBackground>
+      <Sidebar />
     </MainContainer>
   );
 }
