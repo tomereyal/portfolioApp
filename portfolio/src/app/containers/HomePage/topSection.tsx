@@ -9,6 +9,7 @@ import Sidebar from "../../components/sidebar";
 
 //@ts-ignore
 import video from "../../../assests/space.mp4";
+import SideText from "../../components/sideText";
 
 const TopSectionContainer = styled.div`
   min-height: 400px;
@@ -200,12 +201,15 @@ const ButtonsContainer = styled.div`
 flex
 mt-4
 flex-wrap
+justify-center
+items-center
 `}
 `;
 
 export default function TopSection() {
   return (
     <MainContainer>
+      <SideText />
       <TopSectionContainer>
         <LeftContainer>
           <GlassBackground>
