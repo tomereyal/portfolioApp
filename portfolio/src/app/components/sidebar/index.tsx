@@ -54,6 +54,7 @@ export default function Sidebar() {
           <Button
             shape={"circle"}
             circleSize={30}
+            textColor={"white"}
             icon={<FontAwesomeIcon icon={faFacebook} />}
             onClick={onItemClick("https://www.facebook.com/tomereyal1")}
           />
@@ -62,6 +63,7 @@ export default function Sidebar() {
           <Button
             shape={"circle"}
             circleSize={30}
+            textColor={"white"}
             icon={<FontAwesomeIcon icon={faInstagram} />}
             onClick={onItemClick("https://www.instagram.com/tomereyal1/?hl=en")}
           />
@@ -70,6 +72,7 @@ export default function Sidebar() {
           <Button
             shape={"circle"}
             circleSize={30}
+            textColor={"white"}
             icon={<FontAwesomeIcon icon={faLinkedin} />}
             onClick={onItemClick(
               "https://www.linkedin.com/in/tomer-eyal-a9a9bb189/?originalSubdomain=il"

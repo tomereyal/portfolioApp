@@ -1,10 +1,13 @@
 import React, { MouseEventHandler } from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import tinycolor from "tinycolor2";
 
 interface IButtonProps {
   theme?: "filled" | "outlined";
   shape?: "square" | "circle";
+  textColor?: string;
+  bgc?: string;
   text?: string;
   icon?: any;
   circleSize?: number;
@@ -14,21 +17,43 @@ interface IButtonStyleProps {
   theme?: "filled" | "outlined";
   shape?: "square" | "circle";
   circleSize?: number;
+  textColor?: string;
+  bgc?: string;
 }
 
 const BaseButton = styled.button<IButtonStyleProps>`
   border-style: solid;
   border-width: 2px;
-  border-color: ${({ theme }) => (theme === "filled" ? "black" : `white`)};
-  background-color: ${({ theme }) =>
-    theme === "filled" ? "white" : `transparent`};
-  color: ${({ theme }) => (theme === "filled" ? "black" : `white`)};
+  border-color: ${({ theme, textColor, bgc }) =>
+    theme === "filled" ? bgc : textColor};
+  background-color: ${({ theme, bgc }) =>
+    theme === "filled" ? bgc : `transparent`};
+  color: ${({ theme, textColor, bgc = "white" }) =>
+    theme === "filled"
+      ? tinycolor
+          .mostReadable(bgc, [bgc], { includeFallbackColors: true })
+          .toHexString()
+      : textColor};
 
   &:hover {
-    border-color: ${({ theme }) => (theme === "filled" ? "white" : `black`)};
-    background-color: ${({ theme }) =>
-      theme === "filled" ? "transparent" : `white`};
-    color: ${({ theme }) => (theme === "filled" ? "white" : `black`)};
+    border-color: ${({ theme, textColor, bgc }) =>
+      theme === "filled" ? bgc : textColor};
+    background-color: ${({ theme, textColor = "black", bgc = "white" }) =>
+      theme === "filled"
+        ? tinycolor
+            .mostReadable(bgc, [bgc], {
+              includeFallbackColors: true,
+            })
+            .toHexString()
+        : textColor};
+    color: ${({ theme, textColor = "black", bgc = "white" }) =>
+      theme === "filled"
+        ? bgc
+        : tinycolor
+            .mostReadable(textColor, [textColor], {
+              includeFallbackColors: true,
+            })
+            .toHexString()};
   }
 
   height: ${({ shape, circleSize }) =>
@@ -59,10 +84,26 @@ const BaseButton = styled.button<IButtonStyleProps>`
 `;
 
 export default function Button(props: IButtonProps) {
-  const { theme, shape, circleSize, text, icon, onClick } = props;
+  const {
+    theme,
+    shape,
+    textColor = "black",
+    bgc = "white",
+    circleSize,
+    text,
+    icon,
+    onClick,
+  } = props;
+
   return (
     <span onClick={onClick}>
-      <BaseButton shape={shape} theme={theme} circleSize={circleSize}>
+      <BaseButton
+        shape={shape}
+        theme={theme}
+        circleSize={circleSize}
+        textColor={textColor}
+        bgc={bgc}
+      >
         {text}
         {icon}
       </BaseButton>

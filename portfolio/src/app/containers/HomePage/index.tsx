@@ -4,7 +4,7 @@ import tw from "twin.macro";
 import Navbar from "../../components/navbar";
 import TopSection from "./topSection";
 import { Marginer } from "../../components/marginer";
-
+import ProjectsSection from "./projectsSection";
 
 const PageContainer = styled.div`
   ${tw`
@@ -21,7 +21,8 @@ export default function HomePage() {
     <PageContainer>
       <Navbar />
       <TopSection />
-      <Marginer direction="vertical" margin="3em" />
+      {/* <Marginer direction="vertical" margin="8em" /> */}
+      <ProjectsSection />
     </PageContainer>
   );
 }

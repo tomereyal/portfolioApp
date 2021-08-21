@@ -217,7 +217,7 @@ export default function TopSection() {
             <Description>It's dark in here..</Description>
           </GlassBackground>
           <ButtonsContainer>
-            <Button theme="outlined" text="Enter" />
+            <Button theme="outlined" text="Enter" textColor={"white"} />
           </ButtonsContainer>
         </LeftContainer>
 
