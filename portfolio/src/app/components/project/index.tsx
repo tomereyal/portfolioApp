@@ -2,7 +2,7 @@ import React from "react";
 //----myCOMPONENTS-------------------------------
 import Button from "../button";
 //----INSTALLED-COMPONENTS-----------------------
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import tw from "twin.macro";
 import { IProject } from "../../../typings/project";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,6 +51,7 @@ const MainContainer = styled.div<IMainContainer>`
 
 interface IProjectContainer {
   index?: number;
+  inViewport?: boolean;
 }
 
 const ProjectContainer = styled.div<IProjectContainer>`
@@ -58,8 +59,8 @@ const ProjectContainer = styled.div<IProjectContainer>`
   background-repeat: no-repeat;
   background-position: 50% 100%;
   background-size: 55%;
-  animation: ${resizeShadow} ${({ index = 0 }) => 3 + index}s ease-in-out
-    infinite;
+  animation: ${({ inViewport }) => (inViewport ? resizeShadow : "")}
+    ${({ index = 0 }) => 3 + index}s ease-in-out infinite;
   ${tw`
    w-full
    h-full
@@ -77,10 +78,12 @@ const ProjectContainer = styled.div<IProjectContainer>`
 
 interface IOvalProject {
   index?: number;
+  inViewport?: boolean;
 }
 const OvalProject = styled.div<IOvalProject>`
   box-shadow: 0 1.3px 6px -2px rgba(0, 0, 0, 0.4);
-  animation: ${bouncing} ${({ index = 0 }) => 3 + index}s ease-in-out infinite;
+  animation: ${({ inViewport }) => (inViewport ? bouncing : "")}
+    ${({ index = 0 }) => 3 + index}s ease-in-out infinite;
 
   ${tw`
     flex
@@ -219,8 +222,8 @@ export default function Project(props: IPropsProject) {
   return (
     <MainContainer inViewport={inViewport}>
       {inViewport && (
-        <ProjectContainer index={index}>
-          <OvalProject index={index}>
+        <ProjectContainer index={index} inViewport={inViewport}>
+          <OvalProject index={index} inViewport={inViewport}>
             <ProjectThumbnail>
               <img src={thumbnail} alt="website" />
             </ProjectThumbnail>

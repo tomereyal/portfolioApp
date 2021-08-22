@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar";
 import TopSection from "./topSection";
 import { Marginer } from "../../components/marginer";
 import ProjectsSection from "./projectsSection";
+import TechSection from "./techSection";
 
 const PageContainer = styled.div`
   ${tw`
@@ -23,6 +24,7 @@ export default function HomePage() {
       <TopSection />
       {/* <Marginer direction="vertical" margin="8em" /> */}
       <ProjectsSection />
+      <TechSection />
     </PageContainer>
   );
 }

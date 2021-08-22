@@ -212,9 +212,9 @@ export default function TopSection() {
       <SideText />
       <TopSectionContainer>
         <LeftContainer>
+          <Slogan>Hi,I'm Tomer Eyal, Welcome</Slogan>
           <GlassBackground>
-            <Slogan>I'm Tomer Eyal, Welcome</Slogan>
-            <Description>It's dark in here..</Description>
+            <Description>Full Stack Developer </Description>
           </GlassBackground>
           <ButtonsContainer>
             <Button theme="outlined" text="Enter" textColor={"white"} />

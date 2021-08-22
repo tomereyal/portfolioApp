@@ -10,29 +10,11 @@ import Project from "../../components/project";
 import { IProject } from "./types";
 import { projects } from "../../Data/projects";
 import { useInViewport } from "react-in-viewport";
-
-interface IProjectSectionProps {
-  inViewport?: boolean;
-  ref?: any;
-}
-
-const BackgroundContainer = styled.div`
-  ${tw`
-    min-h-full
-    w-full
-    flex
-    flex-col
-    items-center
-    justify-center
-    bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
-
-`}
-`;
+import { ISectionProps } from "../../../typings/section.js";
 
 const MainContainer = styled.div`
   ${tw`
    w-full
-    min-h-screen
     flex
     flex-col
     items-center
@@ -40,25 +22,25 @@ const MainContainer = styled.div`
     pr-4
     pl-4
     pt-10
-    pb-10
+    pb-14
     md:pl-28
     md:pr-28 
     md:pb-5
-    bg-gradient-to-r from-purple-400 via-pink-500 to-red-500
+    bg-gradient-to-b from-black via-gray-500 to-white
 `}
+  padding-bottom: 100px;
 `;
 
 const Title = styled.h2`
   ${tw`
 text-3xl
 lg:text-5xl
-text-black
+text-white
 font-extrabold
-
 `}
 `;
 
-const ProjectsContainer = styled.div<IProjectSectionProps>`
+const ProjectsContainer = styled.div<ISectionProps>`
   opacity: ${({ inViewport = true }) => (inViewport ? 1 : 0)};
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
